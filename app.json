@@ -7,10 +7,11 @@
     "icon": "./assets/app/app-icon.png",
     "userInterfaceStyle": "light",
     "ios": {
+      "bundleIdentifier": "com.ndubosq.chronoquatorze",
       "supportsTablet": true
     },
     "android": {
-      "package": "com.clementmartin.chroket",
+      "package": "com.ndubosq.chronoquatorze",
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
         "foregroundImage": "./assets/app/app-android-foreground.png",
