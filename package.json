@@ -2,6 +2,9 @@
   "name": "chroket",
   "version": "1.0.0",
   "main": "index.ts",
+  "engines": {
+    "node": ">=22.13.0"
+  },
   "dependencies": {
     "expo": "~57.0.2",
     "expo-audio": "~57.0.0",
