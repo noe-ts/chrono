@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Chrono Basket",
-    "slug": "chroket",
+    "slug": "noe",
     "version": "1.0.0",
     "orientation": "landscape",
     "icon": "./assets/app/app-icon.png",
@@ -39,9 +39,9 @@
     ],
     "extra": {
       "eas": {
-        "projectId": "4e35a66b-ba6b-40cf-9f8d-330550a2f2fe"
+        "projectId": "fcb8cfeb-7bd8-4890-b3cd-5e3f56a7a0c1"
       }
     },
-    "owner": "clementm"
+    "owner": "noe-dbsq"
   }
 }
