@@ -1,10 +1,8 @@
 import { Image, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import {
-  CHRONO_DESCRIPTIONS,
   CHRONO_LABELS,
   CHRONO_MODES,
-  CHRONO_SUMMARIES,
   CHRONO_THEME,
   HOME_IMAGES,
 } from '../domain/chronos';
@@ -35,7 +33,7 @@ export function HomeScreen({ onSelectMode }: HomeScreenProps) {
               key={mode}
               accessibilityRole="button"
               accessibilityLabel={`Choisir ${CHRONO_LABELS[mode]}`}
-              style={[styles.card, { borderColor: theme.accent, backgroundColor: theme.surface }]}
+              style={[styles.card, { backgroundColor: theme.surface }]}
               onPress={() => onSelectMode(mode)}
             >
               <View style={[styles.photoFrame, { backgroundColor: theme.panel }]}>
@@ -43,11 +41,9 @@ export function HomeScreen({ onSelectMode }: HomeScreenProps) {
               </View>
               <View style={styles.cardBody}>
                 <Text style={styles.cardTitle}>{CHRONO_LABELS[mode]}</Text>
-                <Text style={styles.cardSubtitle}>{CHRONO_DESCRIPTIONS[mode]}</Text>
-                <Text style={styles.cardSummary}>{CHRONO_SUMMARIES[mode]}</Text>
               </View>
               <View style={[styles.launchBadge, { backgroundColor: theme.accent }]}>
-                <Text style={[styles.launchText, { color: theme.textOnAccent }]}>S'entrainer</Text>
+                <Text style={[styles.launchText, { color: theme.textOnAccent }]}>Entrainement</Text>
               </View>
             </Pressable>
           );
@@ -72,13 +68,13 @@ const styles = StyleSheet.create({
   title: {
     color: '#f8fafc',
     fontSize: 34,
-    fontWeight: '900',
+    fontWeight: '700',
     letterSpacing: 0,
   },
   subtitle: {
     color: '#cbd5e1',
     fontSize: 16,
-    fontWeight: '600',
+    fontWeight: '400',
     letterSpacing: 0,
     textAlign: 'center',
   },
@@ -90,9 +86,8 @@ const styles = StyleSheet.create({
   },
   card: {
     width: 236,
-    minHeight: 260,
+    minHeight: 222,
     borderRadius: 8,
-    borderWidth: 2,
     padding: 14,
     gap: 12,
   },
@@ -114,22 +109,7 @@ const styles = StyleSheet.create({
   cardTitle: {
     color: '#f8fafc',
     fontSize: 20,
-    fontWeight: '900',
-    letterSpacing: 0,
-    textAlign: 'center',
-  },
-  cardSubtitle: {
-    color: '#e2e8f0',
-    fontSize: 13,
     fontWeight: '700',
-    letterSpacing: 0,
-    textAlign: 'center',
-  },
-  cardSummary: {
-    color: '#cbd5e1',
-    fontSize: 12,
-    lineHeight: 16,
-    fontWeight: '500',
     letterSpacing: 0,
     textAlign: 'center',
   },
@@ -142,7 +122,7 @@ const styles = StyleSheet.create({
   },
   launchText: {
     fontSize: 13,
-    fontWeight: '900',
+    fontWeight: '700',
     letterSpacing: 0,
   },
 });

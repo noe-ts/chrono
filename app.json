@@ -4,7 +4,7 @@
     "slug": "chroket",
     "version": "1.0.0",
     "orientation": "landscape",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/app/app-icon.png",
     "userInterfaceStyle": "light",
     "ios": {
       "supportsTablet": true
@@ -13,9 +13,9 @@
       "package": "com.clementmartin.chroket",
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
-        "foregroundImage": "./assets/android-icon-foreground.png",
-        "backgroundImage": "./assets/android-icon-background.png",
-        "monochromeImage": "./assets/android-icon-monochrome.png"
+        "foregroundImage": "./assets/app/app-android-foreground.png",
+        "backgroundImage": "./assets/app/app-android-background.png",
+        "monochromeImage": "./assets/app/app-android-monochrome.png"
       },
       "predictiveBackGestureEnabled": false,
       "permissions": [
@@ -26,7 +26,7 @@
       ]
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/app/app-favicon.png"
     },
     "plugins": [
       [

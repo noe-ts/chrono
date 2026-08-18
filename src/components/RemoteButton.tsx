@@ -8,7 +8,7 @@ type RemoteButtonProps = {
   disabled?: boolean;
   onLongPress?: () => void;
   delayLongPress?: number;
-  variant?: 'primary' | 'secondary' | 'compact' | 'plain';
+  variant?: 'primary' | 'secondary' | 'compact' | 'primaryCompact' | 'plain';
 };
 
 export function RemoteButton({
@@ -29,6 +29,7 @@ export function RemoteButton({
         variant === 'primary' && styles.primaryButton,
         variant === 'secondary' && styles.secondaryButton,
         variant === 'compact' && styles.compactButton,
+        variant === 'primaryCompact' && styles.primaryCompactButton,
         variant === 'plain' && styles.plainButton,
         disabled && styles.buttonDisabled,
       ]}
@@ -38,7 +39,12 @@ export function RemoteButton({
       disabled={disabled}
     >
       {image && (
-        <View style={[styles.photoFrame, variant === 'compact' && styles.compactPhotoFrame]}>
+        <View
+          style={[
+            styles.photoFrame,
+            (variant === 'compact' || variant === 'primaryCompact') && styles.compactPhotoFrame,
+          ]}
+        >
           <Image source={image} resizeMode="cover" style={styles.photo} />
         </View>
       )}
@@ -83,6 +89,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: 6,
     paddingVertical: 6,
     backgroundColor: '#334155',
+  },
+  primaryCompactButton: {
+    minWidth: 56,
+    minHeight: 68,
+    paddingHorizontal: 6,
+    paddingVertical: 6,
+    backgroundColor: '#166534',
   },
   plainButton: {
     minWidth: 88,

@@ -44,7 +44,7 @@ export function SimulatorScreen({ initialMode, onBack }: SimulatorScreenProps) {
 
   isHiddenRef.current = isHidden;
 
-  const buzzerPlayer = useAudioPlayer(require('../../assets/buzzer.wav'));
+  const buzzerPlayer = useAudioPlayer(require('../../assets/audio/shot-clock-buzzer.wav'));
 
   const clearSetRevert = useCallback(() => {
     revertTimeMsRef.current = null;
@@ -431,18 +431,24 @@ export function SimulatorScreen({ initialMode, onBack }: SimulatorScreenProps) {
 
   const modeAAdjustButtons = (
     <View style={styles.adjustButtonRow}>
-      <Pressable style={styles.smallButton} onPress={handleAdjustMinus}>
-        <Text style={styles.smallButtonText}>-</Text>
-      </Pressable>
-      <Pressable
-        style={[styles.smallButton, isCorrectionMode && !isRunning && styles.smallButtonActive]}
+      <RemoteButton
+        label="-"
+        image={CONTROL_IMAGES.bodetCorrectionMinus}
+        onPress={handleAdjustMinus}
+        variant="compact"
+      />
+      <RemoteButton
+        label="C"
+        image={CONTROL_IMAGES.bodetCorrectionOk}
         onPress={handleAdjustCenter}
-      >
-        <Text style={styles.smallButtonText}>C</Text>
-      </Pressable>
-      <Pressable style={styles.smallButton} onPress={handleAdjustPlus}>
-        <Text style={styles.smallButtonText}>+</Text>
-      </Pressable>
+        variant={isCorrectionMode && !isRunning ? 'primaryCompact' : 'compact'}
+      />
+      <RemoteButton
+        label="+"
+        image={CONTROL_IMAGES.bodetCorrectionPlus}
+        onPress={handleAdjustPlus}
+        variant="compact"
+      />
     </View>
   );
 
@@ -488,24 +494,15 @@ export function SimulatorScreen({ initialMode, onBack }: SimulatorScreenProps) {
               <View style={styles.modeBSecondaryRow}>
                 {isModeBCorrection && (
                   <View style={styles.modeBCorrectionControls}>
-                    <RemoteButton
-                      label="OK"
-                      image={CONTROL_IMAGES.stramatelOk}
-                      onPress={handleModeBCorrectionOk}
-                      variant="compact"
-                    />
-                    <RemoteButton
-                      label="-"
-                      image={CONTROL_IMAGES.stramatelMinus}
-                      onPress={handleModeBSecondaryMinus}
-                      variant="compact"
-                    />
-                    <RemoteButton
-                      label="+"
-                      image={CONTROL_IMAGES.stramatelPlus}
-                      onPress={handleModeBSecondaryPlus}
-                      variant="compact"
-                    />
+                    <Pressable style={styles.correctionChip} onPress={handleModeBCorrectionOk}>
+                      <Text style={styles.correctionChipText}>OK</Text>
+                    </Pressable>
+                    <Pressable style={styles.correctionChip} onPress={handleModeBSecondaryMinus}>
+                      <Text style={styles.correctionChipText}>-</Text>
+                    </Pressable>
+                    <Pressable style={styles.correctionChip} onPress={handleModeBSecondaryPlus}>
+                      <Text style={styles.correctionChipText}>+</Text>
+                    </Pressable>
                   </View>
                 )}
                 <TimerDisplay
@@ -667,20 +664,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 8,
   },
-  smallButton: {
+  correctionChip: {
     backgroundColor: '#334155',
-    width: 36,
     height: 36,
+    minWidth: 36,
+    paddingHorizontal: 10,
     borderRadius: 8,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  smallButtonActive: {
-    backgroundColor: '#22c55e',
-  },
-  smallButtonText: {
+  correctionChipText: {
     color: '#fff',
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: '700',
     letterSpacing: 0,
   },
